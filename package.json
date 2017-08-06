@@ -1,0 +1,43 @@
+{
+  "name": "camperLaderboard",
+  "version": "1.0.0",
+  "description": "ReactJS FreeCodeCampProejct",
+  "main": "index.js",
+  "scripts": {
+    "gulp": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+..."
+  },
+  "author": "Pawel Marcinkowski",
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babelify": "7.3.0",
+    "browser-sync": "^2.18.13",
+    "browserify": "14.4.0",
+    "eslint": "^4.3.0",
+    "eslint-plugin-react": "^7.1.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-clean-css": "^3.7.0",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-if": "^2.0.2",
+    "gulp-imagemin": "^3.3.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.0",
+    "gulp-uglify": "^3.0.0",
+    "gulp-watch": "^4.3.11",
+    "imagemin-pngquant": "^5.0.1",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "vinyl-buffer": "1.0.0",
+    "vinyl-source-stream": "1.1.0",
+    "bootstrap-sass": "3.3.7",
+    "jquery": "3.2.1"
+  }
+}
