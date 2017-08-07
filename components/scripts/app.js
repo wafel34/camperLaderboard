@@ -11,8 +11,31 @@ class MainTable extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: []
+            data: [],
+            orderDays: "asc",
+            orderAll: "asc"
         };
+    }
+    sortDays = () => {
+        var orderBy = this.state.orderDays === "asc" ? "desc" : "asc",
+            result = this.state.data.sort((a,b) => {
+                return (orderBy === "desc") ? (b["recent"] - a["recent"]) : (a["recent"] - b["recent"]);
+
+            });
+        this.setState({
+            data: result,
+            orderDays: orderBy
+        });
+    }
+    sortAllTime = () => {
+        var orderBy = this.state.orderAll === "asc" ? "desc" : "asc",
+            result = this.state.data.sort((a,b) => {
+                return (orderBy === "desc") ? (b["alltime"] - a["alltime"]) : (a["alltime"] - b["alltime"]);
+            });
+        this.setState({
+            data: result,
+            orderAll: orderBy
+        });
     }
     componentDidMount() {
         var url = "https://fcctop100.herokuapp.com/api/fccusers/top/recent";
@@ -25,7 +48,6 @@ class MainTable extends React.Component {
     render() {
         var list = this.state.data;
         list = list.map((item, index) => {
-            console.log(item);
             return (
                 <CampersList
                     key={index}
@@ -43,8 +65,8 @@ class MainTable extends React.Component {
                         <tr>
                             <th>Id</th>
                             <th>Camper Name</th>
-                            <th>Points in past 30 days</th>
-                            <th>All time points</th>
+                            <th onClick={this.sortDays}>Points in past 30 days</th>
+                            <th onClick={this.sortAllTime}>All time points</th>
                         </tr>
                     </thead>
                     <tbody>

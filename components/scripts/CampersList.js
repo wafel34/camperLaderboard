@@ -4,10 +4,10 @@ class CampersList extends React.Component {
     render() {
         return (
             <tr>
-            <td>{this.props.id}</td>
-            <td>{this.props.name}</td>
-            <td>{this.props.alltime}</td>
-            <td>{this.props.recent}</td>
+                <td>{this.props.id}</td>
+                <td>{this.props.name}</td>
+                <td>{this.props.recent}</td>
+                <td>{this.props.alltime}</td>
             </tr>
         )
     }
