@@ -13,7 +13,8 @@ class MainTable extends React.Component {
         this.state = {
             data: [],
             orderDays: "asc",
-            orderAll: "asc"
+            orderAll: "asc",
+            orderBy: ""
         };
     }
     sortDays = () => {
@@ -24,7 +25,8 @@ class MainTable extends React.Component {
             });
         this.setState({
             data: result,
-            orderDays: orderBy
+            orderDays: orderBy,
+            orderBy: "days"
         });
     }
     sortAllTime = () => {
@@ -34,7 +36,8 @@ class MainTable extends React.Component {
             });
         this.setState({
             data: result,
-            orderAll: orderBy
+            orderAll: orderBy,
+            orderBy: "all"
         });
     }
     componentDidMount() {
@@ -65,8 +68,8 @@ class MainTable extends React.Component {
                         <tr>
                             <th>Id</th>
                             <th>Camper Name</th>
-                            <th onClick={this.sortDays}>Points in past 30 days</th>
-                            <th onClick={this.sortAllTime}>All time points</th>
+                            <th onClick={this.sortDays}>Points in past 30 days{(this.state.orderBy === "days") ? <span className="glyphicon"></span> : null}</th>
+                            <th onClick={this.sortAllTime}>All time points {(this.state.orderBy === "all") ? <span className="glyphicon"></span> : null}</th>
                         </tr>
                     </thead>
                     <tbody>
