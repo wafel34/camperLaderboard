@@ -12,9 +12,9 @@ class MainTable extends React.Component {
         super(props);
         this.state = {
             data: [],
-            orderDays: "asc",
+            orderDays: "desc",
             orderAll: "asc",
-            orderBy: ""
+            orderBy: "days"
         };
     }
     sortDays = () => {
@@ -50,26 +50,28 @@ class MainTable extends React.Component {
     }
     render() {
         var list = this.state.data;
+        console.log(list[0]);
         list = list.map((item, index) => {
             return (
                 <CampersList
                     key={index}
-                    id={index}
+                    id={index + 1}
                     name={item.username}
                     alltime={item.alltime}
                     recent={item.recent}
+                    imageSrc={item.img}
                 />
             );
         });
         return (
             <div className="container">
-                <table className="table">
+                <table className="table table-striped table-bordered">
                     <thead>
-                        <tr>
+                        <tr className="success">
                             <th>Id</th>
                             <th>Camper Name</th>
-                            <th onClick={this.sortDays}>Points in past 30 days{(this.state.orderBy === "days") ? <span className="glyphicon"></span> : null}</th>
-                            <th onClick={this.sortAllTime}>All time points {(this.state.orderBy === "all") ? <span className="glyphicon"></span> : null}</th>
+                            <th onClick={this.sortDays}>Points in past 30 days {(this.state.orderBy === "days") ? ((this.state.orderDays === "asc") ?<span className="glyphicon glyphicon-chevron-up"></span> : <span className="glyphicon glyphicon-chevron-down"></span>) : null}</th>
+                            <th onClick={this.sortAllTime}>All time points  {(this.state.orderBy === "all") ? ((this.state.orderAll === "asc") ?<span className="glyphicon glyphicon-chevron-up"></span> : <span className="glyphicon glyphicon-chevron-down"></span>) : null}</th>
                         </tr>
                     </thead>
                     <tbody>
