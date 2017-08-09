@@ -40,7 +40,7 @@ class MainTable extends React.Component {
             orderBy: "all"
         });
     }
-    componentDidMount() {
+    componentWillMount() {
         var url = "https://fcctop100.herokuapp.com/api/fccusers/top/recent";
         this.serverRequest = $.get(url, (result) => {
             this.setState({
@@ -50,7 +50,6 @@ class MainTable extends React.Component {
     }
     render() {
         var list = this.state.data;
-        console.log(list[0]);
         list = list.map((item, index) => {
             return (
                 <CampersList
@@ -65,12 +64,18 @@ class MainTable extends React.Component {
         });
         return (
             <div className="container">
+                <h1 className="text-center">FreeCodeCamp - Camper Laderboard</h1>
                 <table className="table table-striped table-bordered">
                     <thead>
                         <tr className="success">
                             <th>Id</th>
                             <th>Camper Name</th>
-                            <th onClick={this.sortDays}>Points in past 30 days {(this.state.orderBy === "days") ? ((this.state.orderDays === "asc") ?<span className="glyphicon glyphicon-chevron-up"></span> : <span className="glyphicon glyphicon-chevron-down"></span>) : null}</th>
+                            <th onClick={this.sortDays}>
+                                Points in past 30 days {(this.state.orderBy === "days") ?
+                                                            ((this.state.orderDays === "asc") ?
+                                                                    <span className="glyphicon glyphicon-chevron-up"></span> : <span className="glyphicon glyphicon-chevron-down"></span>)
+                                                        : null}
+                            </th>
                             <th onClick={this.sortAllTime}>All time points  {(this.state.orderBy === "all") ? ((this.state.orderAll === "asc") ?<span className="glyphicon glyphicon-chevron-up"></span> : <span className="glyphicon glyphicon-chevron-down"></span>) : null}</th>
                         </tr>
                     </thead>
@@ -78,6 +83,10 @@ class MainTable extends React.Component {
                         {list}
                     </tbody>
                 </table>
+                <footer className="text-center">
+                    <span>Pawel Marcinkowski &copy; 2017</span>
+                </footer>
+
             </div>
         );
     }
