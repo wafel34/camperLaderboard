@@ -74,15 +74,13 @@ class MainTable extends React.Component {
                             <th>Camper Name</th>
                             <th>
                                 <a href="#" onClick={this.sortDays}>Points in past 30 days {(this.state.orderBy === "days") ?
-                                    ((this.state.orderDays === "asc") ?
-                                        <span className="glyphicon glyphicon-chevron-up"></span> : <span className="glyphicon glyphicon-chevron-down"></span>)
+                                        <span className={(this.state.orderDays === "asc") ? " glyphicon glyphicon-chevron-up" : "glyphicon glyphicon-chevron-down"}></span>
                                     : null}
                                 </a>
                             </th>
                             <th>
-                                <a href="#" onClick={this.sortAllTime}>All time points
-                                    {(this.state.orderBy === "all") ?
-                                        ((this.state.orderAll === "asc") ?<span className="glyphicon glyphicon-chevron-up"></span> : <span className="glyphicon glyphicon-chevron-down"></span>)
+                                <a href="#" onClick={this.sortAllTime}>All time points {(this.state.orderBy === "all") ?
+                                        <span className={(this.state.orderAll === "asc") ? " glyphicon glyphicon-chevron-up" : "glyphicon glyphicon-chevron-down"}></span>
                                     : null}
                                 </a>
                             </th>
