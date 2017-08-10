@@ -17,7 +17,8 @@ class MainTable extends React.Component {
             orderBy: "days"
         };
     }
-    sortDays = () => {
+    sortDays = (e) => {
+        e.preventDefault();
         var orderBy = this.state.orderDays === "asc" ? "desc" : "asc",
             result = this.state.data.sort((a,b) => {
                 return (orderBy === "desc") ? (b["recent"] - a["recent"]) : (a["recent"] - b["recent"]);
@@ -29,7 +30,8 @@ class MainTable extends React.Component {
             orderBy: "days"
         });
     }
-    sortAllTime = () => {
+    sortAllTime = (e) => {
+        e.preventDefault();
         var orderBy = this.state.orderAll === "asc" ? "desc" : "asc",
             result = this.state.data.sort((a,b) => {
                 return (orderBy === "desc") ? (b["alltime"] - a["alltime"]) : (a["alltime"] - b["alltime"]);
@@ -70,13 +72,20 @@ class MainTable extends React.Component {
                         <tr className="success">
                             <th>Id</th>
                             <th>Camper Name</th>
-                            <th onClick={this.sortDays}>
-                                Points in past 30 days {(this.state.orderBy === "days") ?
-                                                            ((this.state.orderDays === "asc") ?
-                                                                    <span className="glyphicon glyphicon-chevron-up"></span> : <span className="glyphicon glyphicon-chevron-down"></span>)
-                                                        : null}
+                            <th>
+                                <a href="#" onClick={this.sortDays}>Points in past 30 days {(this.state.orderBy === "days") ?
+                                    ((this.state.orderDays === "asc") ?
+                                        <span className="glyphicon glyphicon-chevron-up"></span> : <span className="glyphicon glyphicon-chevron-down"></span>)
+                                    : null}
+                                </a>
                             </th>
-                            <th onClick={this.sortAllTime}>All time points  {(this.state.orderBy === "all") ? ((this.state.orderAll === "asc") ?<span className="glyphicon glyphicon-chevron-up"></span> : <span className="glyphicon glyphicon-chevron-down"></span>) : null}</th>
+                            <th>
+                                <a href="#" onClick={this.sortAllTime}>All time points
+                                    {(this.state.orderBy === "all") ?
+                                        ((this.state.orderAll === "asc") ?<span className="glyphicon glyphicon-chevron-up"></span> : <span className="glyphicon glyphicon-chevron-down"></span>)
+                                    : null}
+                                </a>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
